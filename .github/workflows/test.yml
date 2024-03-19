@@ -1,20 +1,13 @@
 name: test-github-actions
-
-run-name: ${{ github.actor }} is learning Github Actions
-
+run-name: ${{ github.actions }} is learning Github Actions 
 on: [push]
-
-jobs:
-    check-bats-version:
-        runs-on: ubuntu-latest
-
-        steps:
-          - uses: actions/checkout@v4  #checkout repository
-
-          - uses: actions/setup-node@v1  #install node version 21.7.1
-            with:
-               node-version: '21.7.1'
-
-          - run: npm install -g bats #install bats
-
-           - run: bats -v #run bats
+jobs: 
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
